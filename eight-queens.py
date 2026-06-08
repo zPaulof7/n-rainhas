@@ -42,11 +42,25 @@ def climb(board):
     return best_board
 
 def hill_climbing(board):
-    #to do
-    return 
+    board_heuristic = calculate_heuristic(board)
+    if board_heuristic == 0:
+        return board
+    
+    new_board = climb(board)
+    new_board_heuristic = calculate_heuristic(new_board)
+
+    if new_board_heuristic >= board_heuristic:
+        new_board = generate_random_board()
+    
+    return hill_climbing(new_board)
 
 def solve():
-    #to do
-    return
+    board = generate_random_board()
+    solution = hill_climbing(board)
+    print(solution)
 
+def main():
+    solve()
 
+if __name__ == "__main__":
+    main()
