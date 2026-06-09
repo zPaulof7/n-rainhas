@@ -57,10 +57,26 @@ def hill_climbing(board):
 def solve():
     board = generate_random_board()
     solution = hill_climbing(board)
-    print(solution)
+    return solution
 
-def main():
-    solve()
+def draw_board(board):
+    n = len(board)
+    print("   " + "   ".join([str(i) for i in range(n)]))
+    print("  " + "-" * (n * 4 + 1))
+    
+    for row in range(n):
+        line = f"{row} |"
+        
+        for col in range(n):
+            if board[col] == row:
+                line += " ♛ |"
+            else:
+                line += "   |"
+                    
+        print(line)
+        print("  " + "-" * (n * 4 + 1))
+    print("\n")
 
 if __name__ == "__main__":
-    main()
+    solution = solve()
+    draw_board(solution)
